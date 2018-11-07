@@ -9,12 +9,12 @@ package vista;
  *
  * @author Informatica
  */
-public class VentanaPrincipal extends javax.swing.JFrame {
+public class FrameProducto extends javax.swing.JFrame {
 
     /**
-     * Creates new form VentanaPrincipal
+     * Creates new form FrameProducto
      */
-    public VentanaPrincipal() {
+    public FrameProducto() {
         initComponents();
     }
 
@@ -27,14 +27,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        MenuItemCliente = new javax.swing.JMenu();
-        MenuItemProducto = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
         MenuItemVentas = new javax.swing.JMenuItem();
-
-        jMenuItem1.setText("jMenuItem1");
+        MenuItemCliente = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,22 +42,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 414, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 284, Short.MAX_VALUE)
+            .addGap(0, 279, Short.MAX_VALUE)
         );
 
-        MenuItemCliente.setText("Cliente");
-
-        MenuItemProducto.setText("Producto");
-        MenuItemCliente.add(MenuItemProducto);
+        jMenu1.setText("Producto");
 
         MenuItemVentas.setText("Ventas");
-        MenuItemCliente.add(MenuItemVentas);
+        MenuItemVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemVentasActionPerformed(evt);
+            }
+        });
+        jMenu1.add(MenuItemVentas);
 
-        jMenuBar1.add(MenuItemCliente);
+        MenuItemCliente.setText("Cliente");
+        jMenu1.add(MenuItemCliente);
+
+        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -76,6 +80,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void MenuItemVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemVentasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuItemVentasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -94,30 +102,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaPrincipal().setVisible(true);
+                new FrameProducto().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu MenuItemCliente;
-    private javax.swing.JMenuItem MenuItemProducto;
+    private javax.swing.JMenuItem MenuItemCliente;
     private javax.swing.JMenuItem MenuItemVentas;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
