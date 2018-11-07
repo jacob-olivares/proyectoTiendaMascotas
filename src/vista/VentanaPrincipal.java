@@ -54,9 +54,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         MenuItemCliente.setText("Cliente");
 
         MenuItemProducto.setText("Producto");
+        MenuItemProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemProductoActionPerformed(evt);
+            }
+        });
         MenuItemCliente.add(MenuItemProducto);
 
         MenuItemVentas.setText("Ventas");
+        MenuItemVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemVentasActionPerformed(evt);
+            }
+        });
         MenuItemCliente.add(MenuItemVentas);
 
         jMenuBar1.add(MenuItemCliente);
@@ -76,6 +86,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void MenuItemProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemProductoActionPerformed
+        FrameProducto fp = new FrameProducto();
+        fp.setVisible(true);
+    }//GEN-LAST:event_MenuItemProductoActionPerformed
+
+    private void MenuItemVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemVentasActionPerformed
+        FrameVentas fv = new FrameVentas();
+        fv.setVisible(true);
+    }//GEN-LAST:event_MenuItemVentasActionPerformed
 
     /**
      * @param args the command line arguments

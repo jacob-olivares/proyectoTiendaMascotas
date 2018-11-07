@@ -30,9 +30,6 @@ public class FrameProducto extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        MenuItemVentas = new javax.swing.JMenuItem();
-        MenuItemCliente = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,20 +47,7 @@ public class FrameProducto extends javax.swing.JFrame {
         );
 
         jMenu1.setText("Producto");
-
-        MenuItemVentas.setText("Ventas");
-        MenuItemVentas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuItemVentasActionPerformed(evt);
-            }
-        });
-        jMenu1.add(MenuItemVentas);
-
-        MenuItemCliente.setText("Cliente");
-        jMenu1.add(MenuItemCliente);
-
         jMenuBar1.add(jMenu1);
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -80,10 +64,6 @@ public class FrameProducto extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void MenuItemVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemVentasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MenuItemVentasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,10 +101,7 @@ public class FrameProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem MenuItemCliente;
-    private javax.swing.JMenuItem MenuItemVentas;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

@@ -30,9 +30,6 @@ public class FrameVentas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        MenuItemCliente = new javax.swing.JMenuItem();
-        MenuItemProducto = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,15 +47,7 @@ public class FrameVentas extends javax.swing.JFrame {
         );
 
         jMenu1.setText("Ventas");
-
-        MenuItemCliente.setText("Cliente");
-        jMenu1.add(MenuItemCliente);
-
-        MenuItemProducto.setText("Producto");
-        jMenu1.add(MenuItemProducto);
-
         jMenuBar1.add(jMenu1);
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -112,10 +101,7 @@ public class FrameVentas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem MenuItemCliente;
-    private javax.swing.JMenuItem MenuItemProducto;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
