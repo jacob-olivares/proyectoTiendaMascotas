@@ -7,6 +7,7 @@ package controlador;
 
 import java.util.ArrayList;
 import modelo.Cliente;
+import modelo.Producto;
 
 /**
  *
@@ -43,8 +44,8 @@ public class Lista_Enlazada {
         if (cabecera != null) {
             Nodo temporal = cabecera;
             while (contador < tamano) {
-                temporal = temporal.obtenerSiguiente();
                 System.out.println(temporal.obtenerCliente().getNombre());
+                temporal = temporal.obtenerSiguiente();
                 contador++;
             }
         } else {
@@ -54,6 +55,23 @@ public class Lista_Enlazada {
         System.out.println("");
     }
 
+    public void mostrarListaProductos() {
+        System.out.println("");
+        System.out.println("Mostrar Valores de la Lista");
+        int contador = 0;
+        if (cabecera != null) {
+            Nodo temporal = cabecera;
+            while (contador < tamano) {
+                System.out.println(temporal.obtenerProducto().getDescripcion());
+                temporal = temporal.obtenerSiguiente();
+                contador++;
+            }
+        } else {
+            System.out.println("No Existen Datos");
+        }
+        System.out.println("--- FIN DEL INFORME ---");
+        System.out.println("");
+    }
     public Nodo getUltimoNodo() {
         Nodo ultimoNodo = null;
         if (cabecera != null) {
@@ -103,38 +121,97 @@ public class Lista_Enlazada {
         }
         tamano++;
     }
-
+    public void ingresarPrimeroProducto(Producto p) {
+        if (cabecera == null) {
+            cabecera = new Nodo(p);
+        } else {
+            Nodo temporal = cabecera;
+            cabecera = new Nodo(p);
+            cabecera.enlazarSiguiente(temporal);
+        }
+        tamano++;
+    }
     public Cliente buscar(int rut) {
         Nodo temporal  = cabecera;
         Cliente c = null;
-        while(temporal != null){
+        while(temporal!= null){
             if(rut == temporal.obtenerCliente().getRut()){
                 c = temporal.obtenerCliente();
-                break;
+            }
+            temporal = temporal.obtenerSiguiente();
+        }
+        return c;
+    }
+    
+    public Cliente buscarXID(int id) {
+        Nodo temporal  = cabecera;
+        Cliente c = null;
+        while(temporal!= null){
+            if(id == temporal.obtenerCliente().getId()){
+                c = temporal.obtenerCliente();
             }
             temporal = temporal.obtenerSiguiente();
         }
         return c;
     }
     public void eliminarClienteXRut(int rut){
-        if(cabecera==ultimo && cabecera.obtenerCliente().getRut() == rut){
-            cabecera =  ultimo = null;
-        }else if(cabecera.obtenerCliente().getRut() == rut){
-            cabecera = cabecera.siguiente;
-        }else{
-            Nodo anterior = cabecera;
-            Nodo temp = cabecera.siguiente;
-            while(temp!=null && temp.obtenerCliente().getRut()!=rut){
-                anterior = anterior.siguiente;
-                temp = temp.siguiente;
-            }
-            if(temp!=null){
-                anterior.siguiente = temp.siguiente;
-                if(temp == ultimo){
-                    ultimo = anterior;
+        if (cabecera != null) {
+            if (cabecera == ultimo && cabecera.obtenerCliente().getRut() == rut) {
+                cabecera = ultimo = null;
+            } else if (cabecera.obtenerCliente().getRut() == rut) {
+                cabecera = cabecera.siguiente;
+            } else {
+                Nodo anterior = cabecera;
+                Nodo temp = cabecera.siguiente;
+                while (temp != null && temp.obtenerCliente().getRut() != rut) {
+                    anterior = anterior.siguiente;
+                    temp = temp.siguiente;
+                }
+                if (temp != null) {
+                    anterior.siguiente = temp.siguiente;
+                    if (temp == ultimo) {
+                        ultimo = anterior;
+                    }
                 }
             }
         }
         tamano--;
+    }
+    
+    public void eliminarProductoXCodigo(int codigo) {
+        if (cabecera != null) {
+            if (cabecera == ultimo && cabecera.obtenerProducto().getCodigo() == codigo) {
+                cabecera = ultimo = null;
+            } else if (cabecera.obtenerProducto().getCodigo() == codigo) {
+                cabecera = cabecera.siguiente;
+            } else {
+                Nodo anterior = cabecera;
+                Nodo temp = cabecera.siguiente;
+                while (temp != null && temp.obtenerProducto().getCodigo() != codigo) {
+                    anterior = anterior.siguiente;
+                    temp = temp.siguiente;
+                }
+                if (temp != null) {
+                    anterior.siguiente = temp.siguiente;
+                    if (temp == ultimo) {
+                        ultimo = anterior;
+                    }
+                }
+            }
+        }
+        tamano--;
+    }
+    
+    //METODOS PARA OBTENER EN UN ARRAYLIST LOS PRODUCTOS Y CLIENTES
+    //QUE EXISTEN EN LA LISTA ENLAZADA
+    
+    public ArrayList<Producto> obtenerProductos(){
+        ArrayList<Producto> productos = new ArrayList<>();
+        Nodo temporal  = cabecera;
+        while(temporal!=null){
+            productos.add(temporal.obtenerProducto());
+            temporal = temporal.obtenerSiguiente();
+        }
+        return productos;
     }
 }

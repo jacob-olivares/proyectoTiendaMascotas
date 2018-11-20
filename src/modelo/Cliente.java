@@ -10,13 +10,15 @@ package modelo;
  * @author Informatica
  */
 public class Cliente {
-    private int rut, telefono;
+    private int id, rut, telefono;
+    private static int correlativo = 0;
     private String dv, nombre, direccion;
 
     public Cliente() {
     }
 
     public Cliente(int rut, int telefono, String dv, String nombre, String direccion) {
+        this.id = correlativo++;
         this.rut = rut;
         this.telefono = telefono;
         this.dv = dv;
@@ -62,6 +64,14 @@ public class Cliente {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     

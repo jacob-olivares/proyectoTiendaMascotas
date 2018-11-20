@@ -11,13 +11,14 @@ package modelo;
  */
 public class Producto {
     private int codigo, precio;
+    private static int correlativo = 0;
     private String descripcion;
 
     public Producto() {
     }
 
-    public Producto(int codigo, int precio, String descripcion) {
-        this.codigo = codigo;
+    public Producto(int precio, String descripcion) {
+        this.codigo = ++correlativo;
         this.precio = precio;
         this.descripcion = descripcion;
     }

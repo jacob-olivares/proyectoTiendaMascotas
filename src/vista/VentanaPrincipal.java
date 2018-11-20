@@ -5,12 +5,16 @@
  */
 package vista;
 
+import controlador.Lista_Enlazada;
+import javax.swing.JOptionPane;
+import modelo.Cliente;
+
 /**
  *
  * @author Informatica
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-
+    Lista_Enlazada lista = new Lista_Enlazada();
     /**
      * Creates new form VentanaPrincipal
      */
@@ -38,6 +42,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtDireccion = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
         txtDV = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuItemCliente = new javax.swing.JMenu();
         MenuItemProducto = new javax.swing.JMenuItem();
@@ -45,7 +50,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenuItem1.setText("jMenuItem1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 153));
 
@@ -60,6 +65,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtDV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDVActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -84,6 +96,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(163, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,7 +121,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addComponent(jButton1)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         MenuItemCliente.setText("Cliente");
@@ -158,6 +176,65 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         fv.setVisible(true);
     }//GEN-LAST:event_MenuItemVentasActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            int rut = Integer.parseInt(txtRut.getText());
+            String dv = txtDV.getText();
+            String nombre = txtNombre.getText();
+            String direccion = txtDireccion.getText();
+            int telefono = Integer.parseInt(txtTelefono.getText());
+            boolean tieneError = false;
+
+            if (txtRut.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "El rut no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
+                this.txtRut.requestFocus();
+                tieneError = true;
+                return;
+            }
+            if (txtDV.getText().length() != 1) {
+                JOptionPane.showMessageDialog(this, "Ingrese digito verificador", "Error", JOptionPane.ERROR_MESSAGE);
+                this.txtDV.requestFocus();
+                tieneError = true;
+                return;
+            }
+            if (txtNombre.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this,"Ingrese nombre del cliente", "Error", JOptionPane.ERROR_MESSAGE);
+                this.txtNombre.requestFocus();
+                tieneError = true;
+                return;
+            }
+            if (txtDireccion.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this,"Ingrese direccion del cliente", "Error", JOptionPane.ERROR_MESSAGE);
+                this.txtDireccion.requestFocus();
+                tieneError = true;
+                return;
+            }
+            if (txtTelefono.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this,"Ingrese telefono del cliente", "Error", JOptionPane.ERROR_MESSAGE);
+                this.txtTelefono.requestFocus();
+                tieneError = true;
+            }
+
+            if (tieneError) {
+                JOptionPane.showMessageDialog(this,"CLIENTE NO INGRESADO", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                Cliente cliente = new Cliente(rut, telefono, dv, nombre, direccion);
+                //*******************SE INGRESA A LISTA ENLAZADA******************
+                lista.ingresarPrimero(cliente);
+                //****************************************************************
+                JOptionPane.showMessageDialog(this, "CLIENTE INGRESADO CORRECTAMENTE", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+            }
+            txtRut.setText("");
+            txtDV.setText("");
+            txtNombre.setText("");
+            txtDireccion.setText("");
+            txtTelefono.setText("");
+            
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Ingrese datos correctos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -197,6 +274,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu MenuItemCliente;
     private javax.swing.JMenuItem MenuItemProducto;
     private javax.swing.JMenuItem MenuItemVentas;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
