@@ -224,4 +224,48 @@ public class Lista_Enlazada {
         }
         return clientes;
     }
+    public void AgregarAlfinal(Object p) {
+        if (cabecera == null) {
+            cabecera = new Nodo(p);
+        } else {
+            Nodo t = cabecera;
+            while (t != null) {
+                t = t.obtenerSiguiente();
+                Nodo nuevo = new Nodo(p);
+                t.enlazarSiguiente(nuevo);
+            }
+        }
+        tamano++;
+    }
+     public void ordenarganadores() {
+        int nummax = getUltimoNodo().obtenerProducto().getCodigo();
+        Nodo temp2 = null;
+        int numAleatorio = (int) (Math.random() * (0 - nummax) + nummax);
+        if (cabecera != null) {
+            if (cabecera == ultimo && cabecera.obtenerProducto().getCodigo() == numAleatorio) {
+                temp2 = cabecera;
+                cabecera = ultimo = null;
+            } else if (cabecera.obtenerProducto().getCodigo() == numAleatorio) {
+                temp2 = cabecera;
+                cabecera = cabecera.siguiente;
+            } else {
+                Nodo anterior = cabecera;
+                Nodo temp = cabecera.siguiente;
+                while (temp != null && temp.obtenerProducto().getCodigo() != numAleatorio) {
+                    anterior = anterior.siguiente;
+                    temp = temp.siguiente;
+                }
+                if (temp != null) {
+                    anterior.siguiente = temp.siguiente;
+                    if (temp == ultimo) {
+                        ultimo = anterior;
+                    }
+                }
+            }
+        }
+        mostrarListaProductos();
+        tamano--;
+        AgregarAlfinal(temp2);
+        mostrarListaProductos();
+    }
 }

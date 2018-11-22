@@ -6,6 +6,7 @@
 package vista;
 
 import controlador.Lista_Enlazada;
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import modelo.Cliente;
 
@@ -15,15 +16,20 @@ import modelo.Cliente;
  */
 public class FrameCliente extends javax.swing.JFrame {
     private Lista_Enlazada lista;
+    private Lista_Enlazada lista_c;
     /**
      * Creates new form VentanaPrincipal
      */
-    public FrameCliente() {
-        initComponents();
-        
-        
+    
+
+    public FrameCliente(){
     }
 
+    public FrameCliente(Lista_Enlazada l, Lista_Enlazada l_c) {
+        initComponents();
+        lista = l;
+        lista_c = new Lista_Enlazada();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -174,7 +180,7 @@ public class FrameCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuItemProductoActionPerformed
 
     private void MenuItemVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemVentasActionPerformed
-        FrameVentas fv = new FrameVentas(lista, null);
+        FrameVentas fv = new FrameVentas(lista, lista_c);
         fv.setVisible(true);
     }//GEN-LAST:event_MenuItemVentasActionPerformed
 
@@ -222,7 +228,7 @@ public class FrameCliente extends javax.swing.JFrame {
             } else {
                 Cliente cliente = new Cliente(rut, telefono, dv, nombre, direccion);
                 //*******************SE INGRESA A LISTA ENLAZADA******************
-                lista.ingresarPrimero(cliente);
+                lista_c.ingresarPrimero(cliente);
                 //****************************************************************
                 JOptionPane.showMessageDialog(this, "CLIENTE INGRESADO CORRECTAMENTE", "Informacion", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -232,49 +238,12 @@ public class FrameCliente extends javax.swing.JFrame {
             txtDireccion.setText("");
             txtTelefono.setText("");
             
-            VentanaPrincipal vp = new VentanaPrincipal(lista);
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Ingrese datos correctos", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrameCliente().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuItemCliente;

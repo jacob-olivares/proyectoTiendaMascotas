@@ -7,6 +7,7 @@ package vista;
 
 import controlador.Lista_Enlazada;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.Cliente;
 import modelo.Producto;
@@ -190,11 +191,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         FrameVentas fv = new FrameVentas(lista, lista_cliente);
         fv.setVisible(true);
+        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        FrameCliente fv = new FrameCliente();
+        FrameCliente fv = new FrameCliente(lista, lista_cliente);
         fv.setVisible(true);
+        
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
