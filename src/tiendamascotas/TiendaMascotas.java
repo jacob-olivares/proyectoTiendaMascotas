@@ -5,6 +5,7 @@
  */
 package tiendamascotas;
 
+import vista.FrameCliente;
 import vista.VentanaPrincipal;
 
 /**

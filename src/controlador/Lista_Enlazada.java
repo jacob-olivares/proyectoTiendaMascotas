@@ -214,4 +214,14 @@ public class Lista_Enlazada {
         }
         return productos;
     }
+        
+    public ArrayList<Cliente> obtenerClientes(){
+        ArrayList<Cliente> clientes = new ArrayList<>();
+        Nodo temporal  = cabecera;
+        while(temporal!=null){
+            clientes.add(temporal.obtenerCliente());
+            temporal = temporal.obtenerSiguiente();
+        }
+        return clientes;
+    }
 }

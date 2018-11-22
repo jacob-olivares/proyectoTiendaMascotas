@@ -23,6 +23,13 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
+    public Producto(int codigo, int precio, String descripcion) {
+        this.codigo = codigo;
+        this.precio = precio;
+        this.descripcion = descripcion;
+    }
+    
+
     public int getCodigo() {
         return codigo;
     }

@@ -6,22 +6,31 @@
 package vista;
 
 import controlador.Lista_Enlazada;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Cliente;
+import modelo.Producto;
 
 /**
  *
  * @author Informatica
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-    Lista_Enlazada lista = new Lista_Enlazada();
+    Producto p = new Producto();
+    private Lista_Enlazada lista;
+    private Lista_Enlazada lista_cliente;
     /**
-     * Creates new form VentanaPrincipal
+     * Creates new form FrameProducto
      */
     public VentanaPrincipal() {
         initComponents();
+        this.txtCodigo.setText(String.valueOf(p.getCodigo()));
+        txtCodigo.setEnabled(false);
+        lista = new Lista_Enlazada();
     }
-
+    public VentanaPrincipal(Lista_Enlazada l){
+        l = lista_cliente;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,47 +40,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        txtCodigo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        txtDescripcion = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txtRut = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
-        txtDireccion = new javax.swing.JTextField();
-        txtTelefono = new javax.swing.JTextField();
-        txtDV = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtPrecioNeto = new javax.swing.JTextField();
+        btnAgregar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        MenuItemCliente = new javax.swing.JMenu();
-        MenuItemProducto = new javax.swing.JMenuItem();
-        MenuItemVentas = new javax.swing.JMenuItem();
-
-        jMenuItem1.setText("jMenuItem1");
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 153));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel1.setText("Rut:");
+        jLabel1.setText("Codigo");
 
-        jLabel2.setText("Nombre:");
+        jLabel2.setText("Descripcion");
 
-        jLabel3.setText("Direccion:");
+        jLabel3.setText("Precio Neto");
 
-        jLabel4.setText("Telefono:");
-
-        txtDV.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDVActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Agregar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
 
@@ -80,71 +76,62 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtRut, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtDV, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(163, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel2)))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtCodigo)
+                    .addComponent(txtDescripcion)
+                    .addComponent(txtPrecioNeto, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                .addContainerGap(255, Short.MAX_VALUE)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(jButton1)
-                .addContainerGap(56, Short.MAX_VALUE))
+                    .addComponent(txtPrecioNeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addComponent(btnAgregar)
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
-        MenuItemCliente.setText("Cliente");
+        jMenu1.setText("Producto");
 
-        MenuItemProducto.setText("Producto");
-        MenuItemProducto.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setText("Ventas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuItemProductoActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        MenuItemCliente.add(MenuItemProducto);
+        jMenu1.add(jMenuItem1);
 
-        MenuItemVentas.setText("Ventas");
-        MenuItemVentas.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.setText("Cliente");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuItemVentasActionPerformed(evt);
+                jMenuItem2ActionPerformed(evt);
             }
         });
-        MenuItemCliente.add(MenuItemVentas);
+        jMenu1.add(jMenuItem2);
 
-        jMenuBar1.add(MenuItemCliente);
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -162,78 +149,53 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDVActionPerformed
-
-    }//GEN-LAST:event_txtDVActionPerformed
-
-    private void MenuItemProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemProductoActionPerformed
-        FrameProducto fp = new FrameProducto();
-        fp.setVisible(true);
-    }//GEN-LAST:event_MenuItemProductoActionPerformed
-
-    private void MenuItemVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemVentasActionPerformed
-        FrameVentas fv = new FrameVentas();
-        fv.setVisible(true);
-    }//GEN-LAST:event_MenuItemVentasActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            int rut = Integer.parseInt(txtRut.getText());
-            String dv = txtDV.getText();
-            String nombre = txtNombre.getText();
-            String direccion = txtDireccion.getText();
-            int telefono = Integer.parseInt(txtTelefono.getText());
-            boolean tieneError = false;
-
-            if (txtRut.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "El rut no debe estar vacio", "Error", JOptionPane.ERROR_MESSAGE);
-                this.txtRut.requestFocus();
-                tieneError = true;
-                return;
-            }
-            if (txtDV.getText().length() != 1) {
-                JOptionPane.showMessageDialog(this, "Ingrese digito verificador", "Error", JOptionPane.ERROR_MESSAGE);
-                this.txtDV.requestFocus();
-                tieneError = true;
-                return;
-            }
-            if (txtNombre.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this,"Ingrese nombre del cliente", "Error", JOptionPane.ERROR_MESSAGE);
-                this.txtNombre.requestFocus();
-                tieneError = true;
-                return;
-            }
-            if (txtDireccion.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this,"Ingrese direccion del cliente", "Error", JOptionPane.ERROR_MESSAGE);
-                this.txtDireccion.requestFocus();
-                tieneError = true;
-                return;
-            }
-            if (txtTelefono.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this,"Ingrese telefono del cliente", "Error", JOptionPane.ERROR_MESSAGE);
-                this.txtTelefono.requestFocus();
-                tieneError = true;
-            }
-
-            if (tieneError) {
-                JOptionPane.showMessageDialog(this,"CLIENTE NO INGRESADO", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                Cliente cliente = new Cliente(rut, telefono, dv, nombre, direccion);
-                //*******************SE INGRESA A LISTA ENLAZADA******************
-                lista.ingresarPrimero(cliente);
-                //****************************************************************
-                JOptionPane.showMessageDialog(this, "CLIENTE INGRESADO CORRECTAMENTE", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-            }
-            txtRut.setText("");
-            txtDV.setText("");
-            txtNombre.setText("");
-            txtDireccion.setText("");
-            txtTelefono.setText("");
-            
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Ingrese datos correctos", "Error", JOptionPane.ERROR_MESSAGE);
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        try{
+        int codigo = Integer.parseInt(txtCodigo.getText());
+        String descripcion = txtDescripcion.getText();
+        int precio = Integer.parseInt(txtPrecioNeto.getText());
+        boolean tieneError = false;
+        
+        //VALIDACIONES DEL FORMULARIO
+        if(txtDescripcion.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Ingrese descripcion del producto","Error", JOptionPane.ERROR_MESSAGE);
+            this.txtDescripcion.requestFocus();
+            tieneError = true;
+            return;
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        if(txtPrecioNeto.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Ingrese precio neto del producto", "Error", JOptionPane.ERROR_MESSAGE);
+            this.txtPrecioNeto.requestFocus();
+            tieneError = true;
+        }
+        
+        if(tieneError){
+            JOptionPane.showMessageDialog(this, "PRODUCTO NO INGRESADO", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }else{
+            Producto producto = new Producto(precio, descripcion);
+            lista.ingresarPrimeroProducto(producto);
+            JOptionPane.showMessageDialog(this, "INGRESADO CORRECTAMENTE", "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
+            txtCodigo.setText(String.valueOf(producto.getCodigo()));
+            txtDescripcion.setText("");
+            txtPrecioNeto.setText("");
+        }
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Ingrese numeros!", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+
+        
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        FrameVentas fv = new FrameVentas(lista, lista_cliente);
+        fv.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        FrameCliente fv = new FrameCliente();
+        fv.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,6 +223,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -271,21 +234,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu MenuItemCliente;
-    private javax.swing.JMenuItem MenuItemProducto;
-    private javax.swing.JMenuItem MenuItemVentas;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnAgregar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtDV;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtRut;
-    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextField txtPrecioNeto;
     // End of variables declaration//GEN-END:variables
 }
